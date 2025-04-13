@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+        <script src="https://kit.fontawesome.com/673bbe22a9.js" crossorigin="anonymous"></script>
+
+        <link rel="icon" href="assets/logo.png">
+        <title>Свободно Падане</title>
+
+        <link rel="stylesheet" href="stylesheet.css">
+
+        <script src="libraries/p5.js"></script>
+        <script src="objects.js"></script>
+        <script src="starSystem.js"></script>
+    </head>
+
+    <body>
+        <header onmouseover="disableSpawn()" onmouseleave="enableSpawn()">
+            <div class="logo">Свободно Падане</div>
+            
+            <div class="hamburger">
+                <span class="fas fa-bars"></span>
+            </div>
+
+            <nav class="nav-bar">
+                <ul>
+                    <li><a href="" class="active">Начало</a></li>
+                    <li><a href="templates.html">Започни Симулация</a></li>
+                    <li><a href="information.html">Информация За Проекта</a></li>
+                    <li><a href="contact.html">Контакти</a></li>
+                </ul>
+            </nav>
+        </header>
+
+        <script>
+            hamburger = document.querySelector(".hamburger");
+            hamburger.onclick = function() {
+                navBar = document.querySelector(".nav-bar");
+                navBar.classList.toggle("active");
+            }
+        </script>
+    </body>
+</html>

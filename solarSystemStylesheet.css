@@ -1,0 +1,223 @@
+* {
+    margin: 0;
+    padding: 0;
+    user-select: none;
+    box-sizing: border-box;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+body {
+    overflow: hidden;
+}
+canvas {
+    margin: auto;
+}
+
+.allRads input[type=radio] {
+    display: none;
+}
+
+.labelCustom {
+    border: 5px solid black;
+    display: inline-block;
+    width: 150px;
+    height: 150px;
+    margin: 10px;
+}
+
+.allRads input[type=radio]:checked + .labelCustom {
+    border-color: aqua;
+}
+
+.btn {
+    position: absolute;
+    top: 15px;
+    left: 15px;
+    height: 45px;
+    width: 45px;
+    text-align: center;
+    background: #1b1b1b;
+    border-radius: 3px;
+    cursor: pointer;
+    transition: left 0.4s ease;
+}
+
+.btn.click {
+    left: 425px;
+}
+
+.btn span {
+    color: white;
+    font-size: 28px;
+    line-height: 45px;
+}
+
+.btn.click span:before {
+    content: '\f00d'
+}
+
+.sidebar.show {
+    left: 0px;
+}
+
+.sidebar {
+    position: fixed;
+    width: 400px;
+    height: 100%;
+    overflow-y: auto;
+    left: -400px;
+    background: #1b1b1b;
+    transition: left 0.4s ease;
+}
+
+.sidebar .text {
+    color:white;
+    font-size: 25px;
+    font-weight: 600;
+    line-height: 65px;
+    text-align: center;
+    background: #1e1e1e;
+    letter-spacing: 1px;
+}
+
+.sidebar .text.smaller {
+    font-size: 20px;
+    font-weight: 300;
+    line-height: 50px;
+    padding-left: 80px;
+    background: #1b1b1b;
+    text-align: left;
+}
+
+.sidebar .text.choice {
+    font-size: 20px;
+    font-weight: 400;
+    line-height: 50px;
+    padding-left: 80px;
+    background: #1b1b1b;
+    text-align: left;
+}
+
+nav ul {
+    background: #1b1b1b;
+    height: 100%;
+    width: 100%;
+    list-style: none;
+}
+
+nav ul li {
+    line-height: 60px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+nav ul li:last-child {
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+nav ul li a {
+    position: relative;
+    color: white;
+    text-decoration: none;
+    font-size: 18px;
+    padding-left: 40px;
+    font-weight: 500;
+    display: block;
+    width: 100%;
+    border-left: 3px solid transparent;
+}
+
+nav ul li.active a, nav ul li.active button{
+    color: cyan;
+    background: #1b1b1b;
+    border-left-color: cyan;
+}
+
+nav ul ul {
+    position: static;
+    display: none;
+}
+
+/* Drop Down */
+
+nav ul .feat-show.show {
+    display: block;
+}
+
+nav ul .learn-show.show4 {
+    display: block;
+}
+
+nav ul .def-show.show5 {
+    display: block;
+}
+
+nav ul .formula-show.show7 {
+    display: block;
+}
+
+nav ul ul li {
+    line-height: 42px;
+    border-bottom: none;
+}
+
+nav ul ul li a, nav ul ul li button {
+    cursor: pointer;
+    font-size: 17px;
+    color: #e6e6e6;
+    padding-left: 80px;
+}
+
+nav ul li ul li a, nav ul li ul li button {
+    color: #e6e6e6;
+    border: none;
+    background: #1b1b1b;
+}
+
+nav ul li.active ul li a, nav ul li.active ul li button {
+    color: #e6e6e6;
+    background: #1b1b1b;
+    border-left-color: transparent;
+}
+
+nav ul ul li a:hover, nav ul ul li button:hover {
+    color: cyan!important;
+    background: #1b1b1b!important;
+}
+
+nav ul li a span, nav ul li button span {
+    position: absolute;
+    top: 50%;
+    right: 20px;
+    transform: translateY(-50%);
+    font-size: 22px;
+    transition: transform 0.4s;
+}
+
+nav ul li a span.rotate {
+    transform: translateY(-50%) rotate(-180deg);
+}
+
+
+
+
+.movementButtonsContainer {
+    position: absolute;
+    left: calc(100% - 8%);
+}
+
+.movementButton {
+    height: 50px;
+    width: 50px;
+}
+
+#leftButton {
+}
+
+#upButton {
+}
+
+#downButton {
+}
+
+#rightButton {
+}

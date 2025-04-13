@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<link rel="icon" href="assets/logo.png">
+        <title>Слънчева Система</title>
+		<script src="https://code.jquery.com/jquery-3.6.3.js" integrity="sha256-nQLuAZGRRcILA+6dMBOvcRh5Pe310sBpanc6+QBmyVM=" crossorigin="anonymous"></script>
+		<script src="https://kit.fontawesome.com/673bbe22a9.js" crossorigin="anonymous"></script>
+
+		<script src="libraries/p5.js"></script>
+		<script src="solarSystem.js"></script>
+		<script src="objects.js"></script>
+		<link rel="stylesheet" href="solarSystemStylesheet.css">
+	</head>
+	<body>
+		<div class="btn"><span class="fas fa-bars"></span></div>
+
+        <nav class="sidebar">
+			<div class="text">Меню</div>
+
+			<ul>
+				<li>
+					<a href="#" class="feat-btn">Обекти<span class="fas fa-caret-down first"></span></a>
+					
+					<ul class="feat-show">
+						<li><button onclick="setup()">Започни Отначало</button></li>
+
+						<li><a href="#"><div class="text smaller" id="photonCount"></div></a></li>
+					</ul>
+				</li>
+
+				<li>
+					<a href="#" class="learn-btn">Научи<span class="fas fa-caret-down fifth"></span></a>
+					
+					<ul class="learn-show">
+						<div class="text choice">Гравитация</div>
+
+						<li>
+							<a href="#" class="def-btn">
+								<div class="text choice">Дефиниция</div>
+								<span class="fas fa-caret-down sixth"></span>
+							</a>
+						</li>
+
+						<ul class="def-show">
+							<li>
+								<div class="text smaller">Гравитацията е явление, което кара всеки обект с маса или енергия да се привлича с всеки друг обект във вселената.</div>
+							</li>
+						</ul>
+						
+						<li>
+							<a href="#" class="formula-btn">
+								<div class="text choice">Формула</div>
+								<span class="fas fa-caret-down eight"></span>
+							</a>
+						</li>
+
+						<ul class="formula-show">
+							<li>
+								<div class="text smaller">Формулата, с която се изчислява гравитационното притегляне е</div>
+								<img src="assets/gravitational formula(white).png" width="336" height="110" alt="F = G*((M1*M2)/r*r)">
+								<div class="text smaller">Това са всички мерни единици във формулата и какво показват</div>
+								<img src="assets/meaning_behing_gravitational_formula.png" width="382" height="125" alt="Physics Formulas">
+							</li>
+						</ul>
+					</ul>
+				</li>
+				
+				<li><a href="index.html"><strong>Върни Се Към Начална Страница</strong></a></li>
+			</ul>
+		</nav>
+
+		<!-- <div class="movementButtonsContainer">
+			<button class="movementButton" id="leftButton" onclick="moveLeft()"></button>
+			<button class="movementButton" id="upButton" onclick="moveUp()"></button>
+			<button class="movementButton" id="downButton" onclick="moveDown()"></button>
+			<button class="movementButton" id="rightButton" onclick="moveRight()"></button>
+		</div> -->
+
+		<script>
+			$('.btn').click(function() {
+				$(this).toggleClass("click");
+				$('.sidebar').toggleClass("show");
+			});
+
+			$('.feat-btn').click(function() {
+				$('nav ul .feat-show').toggleClass("show");
+				$('nav ul .first').toggleClass("rotate");
+			});
+			
+			$('.learn-btn').click(function() {
+				$('nav ul .learn-show').toggleClass("show4");
+				$('nav ul .fifth').toggleClass("rotate");
+			});
+
+			$('.def-btn').click(function() {
+				$('nav ul .def-show').toggleClass("show5");
+				$('nav ul .sixth').toggleClass("rotate");
+			});
+			
+			$('.formula-btn').click(function() {
+				$('nav ul .formula-show').toggleClass("show7");
+				$('nav ul .eight').toggleClass("rotate");
+			});
+
+			$('nav ul li').click(function(){
+				$(this).addClass("active").siblings().removeClass("active");
+			});
+		</script>
+	</body>
+</html>

@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="contactStylesheet.css">
+    <script src="https://smtpjs.com/v3/smtp.js"></script>
+    <link rel="icon" href="assets/logo.png">
+    <title>Контакти</title>
+</head>
+<body>
+    <header>
+        <div class="logo">Свободно Падане</div>
+        <div class="hamburger">
+            <span class="fas fa-bars"></span>
+        </div>
+
+        <nav class="nav-bar">
+            <ul>
+                <li><a href="index.html">Начало</a></li>
+                <li><a href="templates.html">Започни Симулация</a></li>
+                <li><a href="information.html">Информация За Проекта</a></li>
+                <li><a href="" class="active">Контакти</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <script>
+        hamburger = document.querySelector(".hamburger");
+        hamburger.onclick = function() {
+            navBar = document.querySelector(".nav-bar");
+            navBar.classList.toggle("active");
+        }
+    </script>
+
+    <div class="container">
+        <form onsubmit="sendEmail(); reset(); return false;">
+            <h3>Свържете се с мен</h3>
+            <input type="text" id="name" placeholder="Името ви" required>
+            <input type="email" id="email" placeholder="Имейла ви" required>
+            <input type="text" id="phone" placeholder="Телефонният ви номер (не задължително)">
+            <textarea id="message" rows="10" placeholder="За какво бихте искали да се свържете с мен?" required></textarea>
+            <button type="submit"><strong>Изпрати</strong></button>
+        </form>
+    </div>
+
+    <script>
+        function sendEmail() {
+            let name = document.getElementById("name");
+            let email = document.getElementById("email");
+            let phone = document.getElementById("phone");
+            let ebody = '<b>Name: </b>${name.value} <br><b>Email: </b>${email.value}<br><b>Phone: </b>${phone.value}'
+
+            Email.send({
+                SecureToken : "57fe2734-ea05-4387-98fe-f6b99a893cb8",
+                To : 'simplifiedphysicsit@gmail.com',
+                From : email.value,
+                Subject : "Contact Email From: " + email.value,
+                Body : ebody
+            }).then(
+                message => alert(message)
+            );
+        }
+    </script>
+</body>
+</html>

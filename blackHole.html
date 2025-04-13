@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Black Hole Simulation</title>
+
+		<script src="https://code.jquery.com/jquery-3.6.3.js" integrity="sha256-nQLuAZGRRcILA+6dMBOvcRh5Pe310sBpanc6+QBmyVM=" crossorigin="anonymous"></script>
+		<script src="https://kit.fontawesome.com/673bbe22a9.js" crossorigin="anonymous"></script>
+
+		<script src="libraries/p5.js"></script>
+		<script src="blackHole.js"></script>
+		<script src="objects.js"></script>
+
+		<link rel="icon" href="assets/logo.png">
+		<link rel="stylesheet" href="blackHoleStylesheet.css">
+	</head>
+
+	<body>
+        <div class="btn" onmouseover="disableScaling()" onmouseout="enableScaling()"><span class="fas fa-bars"></span></div>
+
+        <nav class="sidebar" onmouseover="disableScaling()" onmouseout="enableScaling()">
+			<div class="text">Меню</div>
+
+			<ul>
+				<li>
+					<a href="#" class="feat-btn">Обекти<span class="fas fa-caret-down first"></span></a>
+					
+					<ul class="feat-show">
+						<li><a href="#"><div style="padding: 0px" class="text smaller" id="photonCount"></div></a></li>
+						<li><button class="text smaller" onclick="setup()">Започни Отначало</button></li>
+					</ul>
+				</li>
+
+				<li>
+					<a href="#" class="learn-btn">Научи<span class="fas fa-caret-down fifth"></span></a>
+					
+					<ul class="learn-show">
+						<div class="text choice">Гравитация</div>
+
+						<li>
+							<a href="#" class="def-btn">
+								<div class="text choice">Дефиниция</div>
+								<span class="fas fa-caret-down sixth"></span>
+							</a>
+						</li>
+
+						<ul class="def-show">
+							<li>
+								<div class="text smaller">Гравитацията е явление, което кара всеки обект с маса или енергия да се привлича с всеки друг обект във вселената.</div>
+							</li>
+						</ul>
+						
+
+						<li>
+							<a href="#" class="formula-btn">
+								<div class="text choice">Формула</div>
+								<span class="fas fa-caret-down eight"></span>
+							</a>
+						</li>
+
+						<ul class="formula-show">
+							<li>
+								<div class="text smaller">Формулата, с която се изчислява гравитационното притегляне е</div>
+								<img src="assets/gravitational formula(white).png" width="336" height="110" alt="F = G*((M1*M2)/r*r)">
+								<div class="text smaller">Това са всички мерни единици във формулата и какво показват</div>
+								<img src="assets/meaning_behing_gravitational_formula.png" width="382" height="125" alt="Physics Formulas">
+							</li>
+						</ul>
+
+
+
+						
+						<div class="text choice">Черна Дупка</div>
+
+
+						<li>
+							<a href="#" class="blackholedef-btn">
+								<div class="text choice">Дефиниция</div>
+								<span class="fas fa-caret-down ninth"></span>
+							</a>
+						</li>
+
+						<ul class="blackholedef-show">
+							<li>
+								<div class="text smaller">Черна дупка е тяло, в близост до което втора космическа скорост става по-голяма от скоростта на светлината.</div>
+							</li>
+						</ul>
+
+
+						<li>
+							<a href="#" class="blackholehorizon-btn">
+								<div class="text choice">Хоризонт На Събитията</div>
+								<span class="fas fa-caret-down tenth"></span>
+							</a>
+						</li>
+
+						<ul class="blackholehorizon-show">
+							<li>
+								<div class="text smaller">Около черна дупка има въображаема сфера наречена хоризонт на събитията. След преминаване през нея, нищо, включително и светлината, не може да избяга.</div>
+							</li>
+						</ul>
+
+
+						<li>
+							<a href="#" class="blackholesingularity-btn">
+								<div class="text choice">Сингулярност</div>
+								<span class="fas fa-caret-down eleventh"></span>
+							</a>
+						</li>
+
+						<ul class="blackholesingularity-show">
+							<li>
+								<div class="text smaller">В центъра на черна дупка има сингулярност, място, където според общата теория на относителността, пространство-времето има безкрайна кривина (т.е. гравитацията става безкрайно силна)</div>
+							</li>
+						</ul>
+						<!-- <ul class="blackhole-show">
+							<li>
+								<div class="text smaller">Черна дупка е...</div><br>
+								<div class="text smaller">Около черна дупка има въображаема сфера наречена хоризонт на събитията</div><br>
+								<div class="text smaller">В центъра на черна дупка има сингулярностмясто, място, където според общата теория на относителността, пространство-времето има безкрайна кривина (т.е. гравитацията става безкрайно силна)</div><br>
+							</li>
+						</ul> -->
+					</ul>
+				</li>
+				
+				<li>
+					<a href="#" class="opt-btn">Настройки<span class="fas fa-caret-down third"></span></a>
+					
+					<ul class="opt-show">
+						<li><div class="text">Промени Правилата</div></li>
+
+						<li>
+							<div class="text choice">
+								Спри Движението
+								<label class="switch">
+									<input onclick="movement()" id="movement" type="checkbox">
+									<span class="slider"></span>
+								</label>
+							</div>
+						</li>
+					</ul>
+				</li>
+
+				<li><a href="index.html"><strong>Върни Се Към Начална Страница</strong></a></li>
+			</ul>
+		</nav>
+
+        <script>
+			$('.btn').click(function() {
+				$(this).toggleClass("click");
+				$('.sidebar').toggleClass("show");
+			});
+
+			$('.feat-btn').click(function() {
+				$('nav ul .feat-show').toggleClass("show");
+				$('nav ul .first').toggleClass("rotate");
+			});
+			
+			$('.learn-btn').click(function() {
+				$('nav ul .learn-show').toggleClass("show4");
+				$('nav ul .fifth').toggleClass("rotate");
+			});
+
+			$('.def-btn').click(function() {
+				$('nav ul .def-show').toggleClass("show5");
+				$('nav ul .sixth').toggleClass("rotate");
+			});
+
+			$('.opt-btn').click(function() {
+				$('nav ul .opt-show').toggleClass("show2");
+				$('nav ul .third').toggleClass("rotate");
+			});
+			
+			$('.formula-btn').click(function() {
+				$('nav ul .formula-show').toggleClass("show7");
+				$('nav ul .eight').toggleClass("rotate");
+			});
+
+			$('.blackholedef-btn').click(function() {
+				$('nav ul .blackholedef-show').toggleClass("show8");
+				$('nav ul .ninth').toggleClass("rotate");
+			});
+			
+			$('.blackholehorizon-btn').click(function() {
+				$('nav ul .blackholehorizon-show').toggleClass("show9");
+				$('nav ul .tenth').toggleClass("rotate");
+			});
+			
+			$('.blackholesingularity-btn').click(function() {
+				$('nav ul .blackholesingularity-show').toggleClass("show10");
+				$('nav ul .eleventh').toggleClass("rotate");
+			});
+			
+			$('nav ul li').click(function(){
+				$(this).addClass("active").siblings().removeClass("active");
+			});
+		</script>
+    </body>
+</html>
