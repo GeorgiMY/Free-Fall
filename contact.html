@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -7,28 +8,40 @@
     <link rel="stylesheet" href="contactStylesheet.css">
     <script src="https://smtpjs.com/v3/smtp.js"></script>
     <link rel="icon" href="assets/logo.png">
-    <title>Контакти</title>
+    <title data-i18n="contact">Contact</title>
+    <script src="translations.js"></script>
+    <script src="languageSwitcher.js"></script>
+    <script src="https://kit.fontawesome.com/673bbe22a9.js" crossorigin="anonymous"></script>
 </head>
+
 <body>
     <header>
-        <div class="logo">Свободно Падане</div>
+        <div class="logo" data-i18n="welcome">Welcome to Free Fall</div>
+
+        <div class="language-switcher">
+            <select id="languageSelect" onchange="setLanguage(this.value)">
+                <option value="en" data-i18n="english">English</option>
+                <option value="bg" data-i18n="bulgarian">Bulgarian</option>
+            </select>
+        </div>
+
         <div class="hamburger">
             <span class="fas fa-bars"></span>
         </div>
 
         <nav class="nav-bar">
             <ul>
-                <li><a href="index.html">Начало</a></li>
-                <li><a href="templates.html">Започни Симулация</a></li>
-                <li><a href="information.html">Информация За Проекта</a></li>
-                <li><a href="" class="active">Контакти</a></li>
+                <li><a href="index.html" data-i18n="home">Home</a></li>
+                <li><a href="templates.html" data-i18n="startSimulation">Start Simulation</a></li>
+                <li><a href="information.html" data-i18n="information">Information</a></li>
+                <li><a href="" class="active" data-i18n="contact">Contact</a></li>
             </ul>
         </nav>
     </header>
 
     <script>
         hamburger = document.querySelector(".hamburger");
-        hamburger.onclick = function() {
+        hamburger.onclick = function () {
             navBar = document.querySelector(".nav-bar");
             navBar.classList.toggle("active");
         }
@@ -36,12 +49,13 @@
 
     <div class="container">
         <form onsubmit="sendEmail(); reset(); return false;">
-            <h3>Свържете се с мен</h3>
-            <input type="text" id="name" placeholder="Името ви" required>
-            <input type="email" id="email" placeholder="Имейла ви" required>
-            <input type="text" id="phone" placeholder="Телефонният ви номер (не задължително)">
-            <textarea id="message" rows="10" placeholder="За какво бихте искали да се свържете с мен?" required></textarea>
-            <button type="submit"><strong>Изпрати</strong></button>
+            <h3 data-i18n="contactUs">Contact Us</h3>
+            <input type="text" id="name" data-i18n-placeholder="name" placeholder="Your Name" required>
+            <input type="email" id="email" data-i18n-placeholder="email" placeholder="Your Email" required>
+            <input type="text" id="phone" data-i18n-placeholder="phone" placeholder="Your Phone Number (optional)">
+            <textarea id="message" rows="10" data-i18n-placeholder="message"
+                placeholder="What would you like to contact me about?" required></textarea>
+            <button type="submit"><strong data-i18n="send">Send</strong></button>
         </form>
     </div>
 
@@ -53,15 +67,22 @@
             let ebody = '<b>Name: </b>${name.value} <br><b>Email: </b>${email.value}<br><b>Phone: </b>${phone.value}'
 
             Email.send({
-                SecureToken : "57fe2734-ea05-4387-98fe-f6b99a893cb8",
-                To : 'simplifiedphysicsit@gmail.com',
-                From : email.value,
-                Subject : "Contact Email From: " + email.value,
-                Body : ebody
+                SecureToken: "57fe2734-ea05-4387-98fe-f6b99a893cb8",
+                To: 'simplifiedphysicsit@gmail.com',
+                From: email.value,
+                Subject: "Contact Email From: " + email.value,
+                Body: ebody
             }).then(
-                message => alert(message)
+                message => {
+                    if (message === "OK") {
+                        alert(getTranslation('emailSent'));
+                    } else {
+                        alert(getTranslation('emailError'));
+                    }
+                }
             );
         }
     </script>
 </body>
+
 </html>

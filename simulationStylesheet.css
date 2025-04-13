@@ -32,13 +32,13 @@ body {
     height: 100%;
 }
 
-.allRads input[type=radio]:checked + .labelCustom {
+.allRads input[type=radio]:checked+.labelCustom {
     border-color: aqua;
 }
 
 
 #container {
-    position:absolute;
+    position: absolute;
     width: 100%;
     height: 100vh;
     display: flex;
@@ -154,7 +154,7 @@ body {
 }
 
 .sidebar .text {
-    color:white;
+    color: white;
     font-size: 25px;
     font-weight: 600;
     line-height: 65px;
@@ -209,7 +209,8 @@ nav ul li a {
     border-left: 3px solid transparent;
 }
 
-nav ul li.active a, nav ul li.active button{
+nav ul li.active a,
+nav ul li.active button {
     color: cyan;
     background: #1b1b1b;
     border-left-color: cyan;
@@ -259,31 +260,36 @@ nav ul ul li {
     border-bottom: none;
 }
 
-nav ul ul li a, nav ul ul li button {
+nav ul ul li a,
+nav ul ul li button {
     cursor: pointer;
     font-size: 17px;
     color: #e6e6e6;
     padding-left: 80px;
 }
 
-nav ul li ul li a, nav ul li ul li button {
+nav ul li ul li a,
+nav ul li ul li button {
     color: #e6e6e6;
     border: none;
     background: #1b1b1b;
 }
 
-nav ul li.active ul li a, nav ul li.active ul li button {
+nav ul li.active ul li a,
+nav ul li.active ul li button {
     color: #e6e6e6;
     background: #1b1b1b;
     border-left-color: transparent;
 }
 
-nav ul ul li a:hover, nav ul ul li button:hover {
-    color: cyan!important;
-    background: #1b1b1b!important;
+nav ul ul li a:hover,
+nav ul ul li button:hover {
+    color: cyan !important;
+    background: #1b1b1b !important;
 }
 
-nav ul li a span, nav ul li button span {
+nav ul li a span,
+nav ul li button span {
     position: absolute;
     top: 50%;
     right: 20px;
@@ -306,7 +312,7 @@ nav ul li a span.rotate {
     height: 34px;
 }
 
-.switch input { 
+.switch input {
     opacity: 0;
     width: 0;
     height: 0;
@@ -336,15 +342,15 @@ nav ul li a span.rotate {
     transition: .4s;
 }
 
-input:checked + .slider {
+input:checked+.slider {
     background-color: #2196F3;
 }
 
-input:focus + .slider {
+input:focus+.slider {
     box-shadow: 0 0 1px #2196F3;
 }
 
-input:checked + .slider:before {
+input:checked+.slider:before {
     -webkit-transform: translateX(26px);
     -ms-transform: translateX(26px);
     transform: translateX(26px);
@@ -402,18 +408,21 @@ input:checked + .slider:before {
     text-decoration: none;
     color: #1b1b1b;
 }
+
 .popup .close:hover {
     color: #2196F3;
 }
+
 .popup .content {
     max-height: 30%;
     overflow: auto;
 }
 
-@media screen and (max-width: 700px){
+@media screen and (max-width: 700px) {
     .box {
         width: 70%;
     }
+
     .popup {
         width: 70%;
     }

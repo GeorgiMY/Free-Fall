@@ -1,46 +1,57 @@
 <!DOCTYPE html>
 <html lang="en">
-    <head>
-        <meta charset="UTF-8">
-        <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-        <script src="https://kit.fontawesome.com/673bbe22a9.js" crossorigin="anonymous"></script>
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-        <link rel="icon" href="assets/logo.png">
-        <title>Свободно Падане</title>
+    <script src="https://kit.fontawesome.com/673bbe22a9.js" crossorigin="anonymous"></script>
 
-        <link rel="stylesheet" href="stylesheet.css">
+    <link rel="icon" href="assets/logo.png">
+    <title data-i18n="welcome">Welcome to Free Fall</title>
 
-        <script src="libraries/p5.js"></script>
-        <script src="objects.js"></script>
-        <script src="starSystem.js"></script>
-    </head>
+    <link rel="stylesheet" href="stylesheet.css">
 
-    <body>
-        <header onmouseover="disableSpawn()" onmouseleave="enableSpawn()">
-            <div class="logo">Свободно Падане</div>
-            
-            <div class="hamburger">
-                <span class="fas fa-bars"></span>
-            </div>
+    <script src="libraries/p5.js"></script>
+    <script src="objects.js"></script>
+    <script src="starSystem.js"></script>
+    <script src="translations.js"></script>
+    <script src="languageSwitcher.js"></script>
+</head>
 
-            <nav class="nav-bar">
-                <ul>
-                    <li><a href="" class="active">Начало</a></li>
-                    <li><a href="templates.html">Започни Симулация</a></li>
-                    <li><a href="information.html">Информация За Проекта</a></li>
-                    <li><a href="contact.html">Контакти</a></li>
-                </ul>
-            </nav>
-        </header>
+<body>
+    <header onmouseover="disableSpawn()" onmouseleave="enableSpawn()">
+        <div class="logo" data-i18n="welcome">Welcome to Free Fall</div>
 
-        <script>
-            hamburger = document.querySelector(".hamburger");
-            hamburger.onclick = function() {
-                navBar = document.querySelector(".nav-bar");
-                navBar.classList.toggle("active");
-            }
-        </script>
-    </body>
+        <div class="language-switcher">
+            <select id="languageSelect" onchange="setLanguage(this.value)">
+                <option value="en" data-i18n="english">English</option>
+                <option value="bg" data-i18n="bulgarian">Bulgarian</option>
+            </select>
+        </div>
+
+        <div class="hamburger">
+            <span class="fas fa-bars"></span>
+        </div>
+
+        <nav class="nav-bar">
+            <ul>
+                <li><a href="" class="active" data-i18n="home">Home</a></li>
+                <li><a href="templates.html" data-i18n="solarSystem">Solar System</a></li>
+                <li><a href="information.html" data-i18n="information">Information</a></li>
+                <li><a href="contact.html" data-i18n="contact">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <script>
+        hamburger = document.querySelector(".hamburger");
+        hamburger.onclick = function () {
+            navBar = document.querySelector(".nav-bar");
+            navBar.classList.toggle("active");
+        }
+    </script>
+</body>
+
 </html>

@@ -1,27 +1,39 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css" />
     <link rel="stylesheet" href="templatesStylesheet.css">
     <link rel="icon" href="assets/logo.png">
-    <title>Симулации</title>
+    <title data-i18n="startSimulation">Start Simulation</title>
+    <script src="translations.js"></script>
+    <script src="languageSwitcher.js"></script>
 </head>
+
 <body>
     <header>
-        <div class="logo">Свободно Падане</div>
+        <div class="logo" data-i18n="welcome">Welcome to Free Fall</div>
+
+        <div class="language-switcher">
+            <select id="languageSelect" onchange="setLanguage(this.value)">
+                <option value="en" data-i18n="english">English</option>
+                <option value="bg" data-i18n="bulgarian">Bulgarian</option>
+            </select>
+        </div>
+
         <div class="hamburger">
             <span class="fas fa-bars"></span>
         </div>
 
         <nav class="nav-bar">
             <ul>
-                <li><a href="index.html">Начало</a></li>
-                <li><a href="" class="active">Започни Симулация</a></li>
-                <li><a href="information.html">Информация За Проекта</a></li>
-                <li><a href="contact.html">Контакти</a></li>
+                <li><a href="index.html" data-i18n="home">Home</a></li>
+                <li><a href="" class="active" data-i18n="startSimulation">Start Simulation</a></li>
+                <li><a href="information.html" data-i18n="information">Information</a></li>
+                <li><a href="contact.html" data-i18n="contact">Contact</a></li>
             </ul>
         </nav>
     </header>
@@ -32,8 +44,9 @@
             <div class="box">
                 <div class="icon"><i class="fa-solid fa-plus"></i></div>
                 <div class="content">
-                    <h3>Създай Вселена</h3>
-                    <p>В тази симулация можете да научите как работи вселената както и да създадете своя!<br>Променете константите на вселената по начин по който вие желаете!</p>
+                    <h3 data-i18n="createUniverse">Create Universe</h3>
+                    <p data-i18n="createUniverseDesc">In this simulation you can learn how the universe works and create
+                        your own!<br>Change the constants of the universe in any way you want!</p>
                 </div>
             </div>
         </a>
@@ -42,8 +55,10 @@
             <div class="box">
                 <div class="icon"><img src="assets/gravity.png" width="60" height="60" alt=""></div>
                 <div class="content">
-                    <h3>Гравитационно Притегляне</h3>
-                    <p>В тази симулация можете да научите как работи гравитацията нагледно!<br>Създайте различни астрономически обекти и гледайте как гравитацията им влияе</p>
+                    <h3 data-i18n="gravitationalAttraction">Gravitational Attraction</h3>
+                    <p data-i18n="gravitationalAttractionDesc">In this simulation you can learn how gravity works
+                        visually!<br>Create different astronomical objects and watch how their gravity affects each
+                        other</p>
                 </div>
             </div>
         </a>
@@ -52,8 +67,9 @@
             <div class="box">
                 <div class="icon"><img src="assets/Sun.png" width="93" height="93" alt=""></div>
                 <div class="content">
-                    <h3>Слънчевата Система</h3>
-                    <p>В тази симулация можете да научите поведението на планетите в нашата слънчева система.</p>
+                    <h3 data-i18n="solarSystem">Solar System</h3>
+                    <p data-i18n="solarSystemDesc">In this simulation you can learn about the behavior of planets in our
+                        solar system.</p>
                 </div>
             </div>
         </a>
@@ -62,8 +78,9 @@
             <div class="box">
                 <div class="icon"><img src="assets/Black Hole.png" alt="" width="90" height="90"></div>
                 <div class="content">
-                    <h3>Черна Дупка</h3>
-                    <p>В тази симулация можете да научите как работят черните дупки нагледно!<br>Фотони, ще бъдат изстреляни към черната дупка! Вижте, кои ще успеят да се измъкнат!</p>
+                    <h3 data-i18n="blackHole">Black Hole</h3>
+                    <p data-i18n="blackHoleDesc">In this simulation you can learn how black holes work
+                        visually!<br>Photons will be shot at the black hole! See which ones manage to escape!</p>
                 </div>
             </div>
         </a>
@@ -72,12 +89,21 @@
             <div class="box">
                 <div class="icon"><img src="assets/logo.png" alt="" width="57" height="78"></div>
                 <div class="content">
-                    <h3>Свободно Падане</h3>
-                    <p>В тази симулация можете да научите как обекти падат в различни гравитационни среди!</p>
+                    <h3 data-i18n="welcome">Welcome to Free Fall</h3>
+                    <p data-i18n="freeFallDesc">In this simulation you can learn how objects fall in different
+                        gravitational environments!</p>
                 </div>
             </div>
         </a>
     </div>
 
+    <script>
+        hamburger = document.querySelector(".hamburger");
+        hamburger.onclick = function () {
+            navBar = document.querySelector(".nav-bar");
+            navBar.classList.toggle("active");
+        }
+    </script>
 </body>
+
 </html>

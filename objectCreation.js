@@ -36,7 +36,7 @@ function createObject() {
         li.setAttribute("id", liId);
         let elements = document.getElementById("radioObjects");
         elements.appendChild(li);
-        
+
         let cbs = document.getElementById(liId);
         let cb = document.createElement("input");
         cb.setAttribute("type", "radio");
@@ -57,5 +57,5 @@ function createObject() {
         labels.appendChild(div);
         toggleCreateObjectScreen();
     }
-    
+
 }

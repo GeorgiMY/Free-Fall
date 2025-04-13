@@ -1,26 +1,39 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="icon" href="assets/logo.png">
-    <title>Информация За Проекта</title>
+    <title data-i18n="information">Information</title>
     <link rel="stylesheet" href="information.css">
+    <script src="translations.js"></script>
+    <script src="languageSwitcher.js"></script>
+    <script src="https://kit.fontawesome.com/673bbe22a9.js" crossorigin="anonymous"></script>
 </head>
+
 <body>
     <header>
-        <div class="logo">Свободно Падане</div>
+        <div class="logo" data-i18n="welcome">Welcome to Free Fall</div>
+
+        <div class="language-switcher">
+            <select id="languageSelect" onchange="setLanguage(this.value)">
+                <option value="en" data-i18n="english">English</option>
+                <option value="bg" data-i18n="bulgarian">Bulgarian</option>
+            </select>
+        </div>
+
         <div class="hamburger">
             <span class="fas fa-bars"></span>
         </div>
 
         <nav class="nav-bar">
             <ul>
-                <li><a href="index.html">Начало</a></li>
-                <li><a href="templates.html">Започни Симулация</a></li>
-                <li><a href="" class="active">Информация За Проекта</a></li>
-                <li><a href="contact.html">Контакти</a></li>
+                <li><a href="index.html" data-i18n="home">Home</a></li>
+                <li><a href="templates.html" data-i18n="startSimulation">Start Simulation</a></li>
+                <li><a href="#" class="active" data-i18n="information">Information</a></li>
+                <li><a href="contact.html" data-i18n="contact">Contact</a></li>
             </ul>
         </nav>
     </header>
@@ -29,25 +42,32 @@
         <div class="container">
             <div class="content-section">
                 <div class="title">
-                    <h1>Всичко за Проекта</h1>
+                    <h1 data-i18n="projectInfo">All About the Project</h1>
                 </div>
                 <div class="content">
-                    <h2>Философията на проекта</h2>
-                    <h3>Защо го създадох?</h3>
-                    <p>От малък съм изключително мотивиран да разбера как и защо вселената работи по начина, по който работи. Преди години стигнах до заключението, че физиката е най-добрият начин да науча това. Един от концептите във физиката, за които имам голям интерес е <strong>гравитацията</strong>.</p>
-                    <!-- <div class="button">
-                        <a href="">Read More</a>
-                    </div> -->
-                    <h3>Цели на проекта</h3>
-                    <p>Главната цел е да помогна на ученици и учители. На учениците в разбирането на това какво е гравитация, а на учителите като им дам инструмент, който позволява да я визуализират.<br>
-                        Втората цел е да мотивирам и да подтиквам хора в изучаването на физика, а на ентусиасти и на тези, които вече им е интересна да помогна като направя процеса на учене по-лесен.</p>
-                
-                    <h2 style="margin-top: 100px">Кое какво е? За какво служи всяко свойство на обектите в проекта?</h2>
-                    <h3>Стрелката</h3>
-                    <p>Стрелката над обекта показва посоката на движение, а дължината ѝ показва скоростта. Колкото по-висока е скоростта толкова по-голяма е дължината на стрелката. Стрелката се появява само ако обектът е в движение.</p>
+                    <h2 data-i18n="projectPhilosophy">Project Philosophy</h2>
+                    <h3 data-i18n="whyCreated">Why did I create it?</h3>
+                    <p data-i18n="whyCreatedText">Since I was young, I've been extremely motivated to understand how and
+                        why the universe works the way it does. Years ago, I reached the conclusion that physics is the
+                        best way to learn this. One of the concepts in physics that I'm very interested in is
+                        <strong>gravity</strong>.
+                    </p>
+                    <h3 data-i18n="projectGoals">Project Goals</h3>
+                    <p data-i18n="projectGoalsText">The main goal is to help students and teachers. To help students
+                        understand what gravity is, and to give teachers a tool that allows them to visualize it.<br>
+                        The second goal is to motivate and encourage people to study physics, and to help enthusiasts
+                        and those already interested by making the learning process easier.</p>
+
+                    <h2 style="margin-top: 100px" data-i18n="objectProperties">What is what? What does each object
+                        property in the project serve?</h2>
+                    <h3 data-i18n="arrow">The Arrow</h3>
+                    <p data-i18n="arrowText">The arrow above the object shows the direction of movement, and its length
+                        shows the speed. The higher the speed, the longer the arrow. The arrow only appears if the
+                        object is in motion.</p>
                     <img src="assets/arrow.PNG" style="height: 150px; width: auto;" alt="">
-                    <h3>Дирята</h3>
-                    <p>Това е следата, която оставя един обект, когато се движи. След приблизително минута дирята започва да изчезва.</p>
+                    <h3 data-i18n="trail">The Trail</h3>
+                    <p data-i18n="trailText">This is the trace that an object leaves when it moves. After approximately
+                        a minute, the trail begins to disappear.</p>
                     <img src="assets/trail.PNG" style="height: 150px; width: auto;" alt="">
                 </div>
             </div>
@@ -57,5 +77,14 @@
             </div>
         </div>
     </div>
+
+    <script>
+        hamburger = document.querySelector(".hamburger");
+        hamburger.onclick = function () {
+            navBar = document.querySelector(".nav-bar");
+            navBar.classList.toggle("active");
+        }
+    </script>
 </body>
+
 </html>

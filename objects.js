@@ -19,10 +19,10 @@ class Planet {
 
     attract(secondBody) {
         let r = dist(this.pos.x, this.pos.y, secondBody.pos.x, secondBody.pos.y);
-		let f = this.pos.copy().sub(secondBody.pos);
-		f.setMag((G * this.mass * secondBody.mass) / (r * r));
-		
-		secondBody.applyForce(f);
+        let f = this.pos.copy().sub(secondBody.pos);
+        f.setMag((G * this.mass * secondBody.mass) / (r * r));
+
+        secondBody.applyForce(f);
     }
 
     draw() {
@@ -45,7 +45,7 @@ class Planet {
     startOrbiting(star) {
         this.vel.rotate(HALF_PI);
         let distance = dist(star.pos.x, star.pos.y, this.pos.x, this.pos.y);
-        this.vel.setMag(sqrt((G*star.mass)/distance));
+        this.vel.setMag(sqrt((G * star.mass) / distance));
     }
 
     startEllipticOrbit(star) {
@@ -54,7 +54,7 @@ class Planet {
         let distance = dist(star.pos.x, star.pos.y, this.pos.x, this.pos.y);
         let semiMajorAxis = distance / (1 - eccentricity);
         this.vel.rotate(HALF_PI);
-        this.vel.setMag(Math.sqrt(G*starMass*(2/distance - 1/semiMajorAxis)));
+        this.vel.setMag(Math.sqrt(G * starMass * (2 / distance - 1 / semiMajorAxis)));
     }
     // randomizeDir() {
     //     let planetVel = this.vel.copy();
@@ -63,11 +63,11 @@ class Planet {
     // }
 
     drawArrow() {
-        if(this.vel.x != 0 && this.vel.y != 0) {
+        if (this.vel.x != 0 && this.vel.y != 0) {
             let v0 = createVector(this.pos.x, this.pos.y - this.r - 10);
             let v1 = createVector(this.vel.x * 20, this.vel.y * 20);
             let myColor = 'red';
-    
+
             push();
             stroke(myColor);
             strokeWeight(3);
@@ -84,7 +84,7 @@ class Planet {
 
     drawTrace() {
         this.history.push(this.pos.copy());
-        
+
         if (this.history.length > 20000) {
             this.history.splice(0, 1);
         }
@@ -94,7 +94,7 @@ class Planet {
         noFill();
         beginShape();
 
-        for(let v of this.history) {
+        for (let v of this.history) {
             vertex(v.x, v.y);
         }
 
@@ -111,7 +111,7 @@ class Star {
 
         this.mass = m;
         this.r = r;
-        
+
         this.color = color;
     }
 
@@ -122,10 +122,10 @@ class Star {
 
     attract(secondBody) {
         let r = dist(this.pos.x, this.pos.y, secondBody.pos.x, secondBody.pos.y);
-		let f = this.pos.copy().sub(secondBody.pos);
-		f.setMag((G * this.mass * secondBody.mass) / (r * r));
-		
-		secondBody.applyForce(f);
+        let f = this.pos.copy().sub(secondBody.pos);
+        f.setMag((G * this.mass * secondBody.mass) / (r * r));
+
+        secondBody.applyForce(f);
     }
 
     update() {
@@ -143,11 +143,11 @@ class Star {
     }
 
     drawArrow() {
-        if(this.vel.x != 0 && this.vel.y != 0) {
+        if (this.vel.x != 0 && this.vel.y != 0) {
             let v0 = createVector(this.pos.x, this.pos.y - this.r - 10);
             let v1 = createVector(this.vel.x * 20, this.vel.y * 20);
             let myColor = 'red';
-    
+
             push();
             stroke(myColor);
             strokeWeight(3);
@@ -182,7 +182,7 @@ class Blackhole {
         photon.vel = p5.Vector.fromAngle(photon.theta);
         photon.vel.setMag(c);
 
-        if(r <= this.rs + 0.5) {
+        if (r <= this.rs + 0.5) {
             photon.stop();
         }
     }
@@ -205,14 +205,14 @@ class Photon {
     constructor(x, y) {
         this.pos = createVector(x, y);
         this.vel = createVector(-c, 0);
-        
+
         this.history = [];
         this.stopped = false;
         this.theta = PI;
     }
 
     update() {
-        if(!this.stopped) {
+        if (!this.stopped) {
             if (frameCount % 5 == 0) {
                 this.history.push(this.pos.copy());
             }
@@ -243,7 +243,7 @@ class Photon {
         stroke(255, 0, 0);
         beginShape();
 
-        for(let v of this.history) {
+        for (let v of this.history) {
             vertex(v.x, v.y);
         }
 
@@ -269,10 +269,10 @@ class Asteroid {
 
     attract(secondBody) {
         let r = dist(this.pos.x, this.pos.y, secondBody.pos.x, secondBody.pos.y);
-		let f = this.pos.copy().sub(secondBody.pos);
-		f.setMag((G * this.mass * secondBody.mass) / (r * r));
-		
-		secondBody.applyForce(f);
+        let f = this.pos.copy().sub(secondBody.pos);
+        f.setMag((G * this.mass * secondBody.mass) / (r * r));
+
+        secondBody.applyForce(f);
     }
 
     draw() {
@@ -290,7 +290,7 @@ class Asteroid {
 
 
 class Particle {
-    constructor (x, y, obj1Color, obj2Color) {
+    constructor(x, y, obj1Color, obj2Color) {
         this.pos = createVector(x, y);
         this.vel = p5.Vector.random2D().mult(random(3, 10));
 
