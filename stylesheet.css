@@ -8,7 +8,8 @@
 }
 
 body {
-    overflow: hidden;
+    overflow-x: hidden;
+    min-height: 100vh;
 }
 
 header {
@@ -20,12 +21,17 @@ header {
     justify-content: space-between;
     padding: 0 100px;
     position: absolute;
+    z-index: 1000;
 }
 
 .logo {
     font-size: 28px;
     font-weight: bold;
     color: #fefefe;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    max-width: 60%;
 }
 
 #logo {
@@ -48,6 +54,7 @@ header {
     border-radius: 50px;
     transition: 0.2s;
     margin: 0 5px;
+    -webkit-tap-highlight-color: transparent;
 }
 
 .nav-bar ul li a:hover {
@@ -60,6 +67,29 @@ header {
     background: #fefefe;
 }
 
+.language-switcher {
+    position: relative;
+    margin-left: 20px;
+}
+
+.language-switcher select {
+    padding: 8px 12px;
+    border-radius: 4px;
+    border: 1px solid #ccc;
+    background-color: white;
+    font-size: 14px;
+    cursor: pointer;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    min-width: 100px;
+}
+
+.language-switcher select:focus {
+    outline: none;
+    border-color: #666;
+}
+
 @media only screen and (max-width: 1320px) {
     header {
         padding: 0 50px;
@@ -70,9 +100,17 @@ header {
     header {
         padding: 0 30px;
     }
+
+    .logo {
+        font-size: 24px;
+    }
 }
 
 @media only screen and (max-width: 900px) {
+    header {
+        padding: 0 20px;
+    }
+
     .hamburger {
         display: block;
         cursor: pointer;
@@ -82,6 +120,7 @@ header {
         width: 45px;
         border-radius: 3px;
         cursor: pointer;
+        -webkit-tap-highlight-color: transparent;
     }
 
     .hamburger span {
@@ -92,55 +131,88 @@ header {
 
     .nav-bar {
         height: 0;
-        position: absolute;
+        position: fixed;
         top: 80px;
         left: 0;
         right: 0;
         width: 100vw;
         background: #11101b;
-        transition: 0.5s;
+        transition: 0.3s ease-in-out;
         overflow: hidden;
+        z-index: 999;
     }
 
     .nav-bar.active {
-        height: 450px;
+        height: 100vh;
     }
 
     .nav-bar ul {
         display: block;
-        width: fit-content;
-        margin: 80px auto 0 auto;
+        width: 100%;
+        margin: 40px auto 0 auto;
         text-align: center;
-        transition: 0.5s;
+        transition: 0.3s;
         opacity: 0;
+        padding: 20px;
     }
 
     .nav-bar.active ul {
         opacity: 1;
     }
 
+    .nav-bar ul li {
+        margin: 20px 0;
+    }
+
     .nav-bar ul li a {
-        margin-bottom: 12px;
+        margin: 0;
+        padding: 15px 25px;
+        font-size: 18px;
+        display: inline-block;
+        min-width: 200px;
+    }
+
+    .language-switcher {
+        position: relative;
+        margin-left: 10px;
+    }
+
+    .language-switcher select {
+        padding: 10px;
+        font-size: 16px;
+        min-width: 120px;
     }
 }
 
-.language-switcher {
-    position: absolute;
-    top: 20px;
-    right: 20px;
-    z-index: 1000;
-}
+@media only screen and (max-width: 480px) {
+    header {
+        padding: 0 15px;
+    }
 
-.language-switcher select {
-    padding: 8px 12px;
-    border-radius: 4px;
-    border: 1px solid #ccc;
-    background-color: white;
-    font-size: 14px;
-    cursor: pointer;
-}
+    .logo {
+        font-size: 20px;
+        max-width: 50%;
+    }
 
-.language-switcher select:focus {
-    outline: none;
-    border-color: #666;
+    .hamburger {
+        height: 40px;
+        width: 40px;
+    }
+
+    .hamburger span {
+        font-size: 24px;
+        line-height: 40px;
+    }
+
+    .nav-bar ul li a {
+        min-width: 180px;
+        padding: 12px 20px;
+        font-size: 16px;
+    }
+
+    .language-switcher select {
+        padding: 8px;
+        font-size: 14px;
+        min-width: 100px;
+    }
 }
