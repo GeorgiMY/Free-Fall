@@ -14,7 +14,8 @@ Main goals:
 - CSS3
 - JavaScript
 - JavaScript libraries used:
-- P5JS - Allows vector calculation and easier creation and movement of objects on the screen
-- SmtpJS - Allows contact by sending an email.
+  - P5JS - Allows vector calculation and easier creation and movement of objects on the screen
+  - SmtpJS - Allows contact by sending an email.
+  - JQuery - Miscellaneous things
 
 ### Link: https://freefall.georgi.my
